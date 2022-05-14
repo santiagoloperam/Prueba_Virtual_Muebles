@@ -86,23 +86,27 @@
 					    url: "PublicacionController.php",
 					    data: datosFormulario,
 					    success: function(data1) {
-					    	console.log("dede insert JSON");
-					    	data1.replace("	", " ")
-					    	.replace(/\\n/g, "\\n")
-					    	.replace(/\\'/g, "\\'")
-					    	.replace(/\\"/g, '\\"')
-					    	.replace(/\\&/g, "\\&")
-					    	.replace(/\\r/g, "\\r")
-					    	.replace(/\\t/g, "\\t")
-					    	.replace(/\\b/g, "\\b")
-					    	.replace(/\\f/g, "\\f")
-					    	.replace(/[\u0000-\u0019]+/g,"");				    	
-					    	data1 = JSON.parse(data1);
-					    	console.log(data1);
-				    			$("#myform").load(" #myform");
-				    			$("#list").load(" #list");
-				    			$('#myform').empty();
-					    		pintar(data1);
+					    	$.ajax({
+							    type: "GET",
+							    url: "PublicacionController.php?action=lista",
+							    success: function(data) {
+							    	//console.log("data");
+							    	data.replace("	", " ")
+							    	.replace(/\\n/g, "\\n")
+							    	.replace(/\\'/g, "\\'")
+							    	.replace(/\\"/g, '\\"')
+							    	.replace(/\\&/g, "\\&")
+							    	.replace(/\\r/g, "\\r")
+							    	.replace(/\\t/g, "\\t")
+							    	.replace(/\\b/g, "\\b")
+							    	.replace(/\\f/g, "\\f")
+							    	.replace(/[\u0000-\u0019]+/g,"");
+
+							    	//console.log(data);
+							    	data = JSON.parse(data);
+							    	pintar(data);
+							  		}//fin success
+						  		});//fin ajax
 					  		}//fin success
 
 				  		});//fin ajax
