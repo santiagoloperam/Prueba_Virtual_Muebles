@@ -49,12 +49,30 @@
 	if(isset($_GET['action']) && $_GET['action']=='login'){
 		$instanciacontrolador = new UsuarioController();
 		$instanciacontrolador->LoginView();
+
 	}
 
 
 	if(isset($_POST['action']) && $_POST['action']=='login'){
 		$instanciacontrolador = new UsuarioController();
-		$instanciacontrolador->VerifyLogin($_POST['email'], $_POST['password']);
+
+		//Validacioón reCAPTCHA
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$captcha = $_POST['g-recaptcha-response'];
+		$secretkey = "6LfMmuofAAAAANCiI15-LkC-vVdUdJNeqHsiCjNm";
+
+		$respuesta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$captcha&remoteip=$ip");
+
+		$atributos = json_decode($respuesta, TRUE);
+
+		if (!$atributos['success']) {
+			$errors[] = 'Verificar Captcha';
+			header("location: ../index.php"); //Lo devuelve a Login
+		}else {
+			$instanciacontrolador->VerifyLogin($_POST['email'], $_POST['password']);
+		}
+
+		
 	}
 	
 

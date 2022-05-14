@@ -32,7 +32,10 @@
 				  <div class="mb-3">
 				    <textarea name="contenido" class="form-control" id="contenido" name="contenido" rows="4" cols="50" placeholder="Contenido">
 				    </textarea>
-				  </div>				  
+				  </div>
+				  <div class="mb-3">
+	            	<div class="g-recaptcha" data-sitekey="6LfMmuofAAAAAEeeWIwCXd3wPaETGvkHPXxpjqNi"></div>
+	              </div>				  
 				  <button type="submit" class="btn btn-primary mb-3">Guardar</button>
 				</form>
 
@@ -46,6 +49,7 @@
 
 			<!--SCRIPTS-->
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 			<script type="text/javascript">
 	   			$(document).ready(function () {  
 	   				

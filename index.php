@@ -32,11 +32,15 @@
             <input type="hidden" name="action" value="login">
             <input name="email" class="form-control mb-3" type="email" placeholder="Email" />
             <input name="password" class="form-control mb-3" type="password" placeholder="Password" />
+            <div class="mb-3">
+            	<div class="g-recaptcha" data-sitekey="6LfMmuofAAAAAEeeWIwCXd3wPaETGvkHPXxpjqNi"></div>
+            </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
           </form>
         </div>
 
       </div>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 
 
